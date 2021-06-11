@@ -1,0 +1,9 @@
+- 
+
+- Import randomize
+- Open the word text file
+- How to keep track of letters that have been guessed
+-Keep track number of guesses
+-Display if letter if correct or incorrect
+
+Adjust word length, or add number of attempts
