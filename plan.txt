@@ -1,4 +1,28 @@
-- 
+- Purpose of the program-- 
+    --The purpose of the program will allow a user to play a word/letter guessing game against the computer.
+
+-Core of its purpose--  
+    --The computer will randomly generate a word and the user must guess the correct letters in that word to win. 
+
+-Steps to build this out--
+    -Need to open the words.txt file--done 
+    -Need to pull out a randomized word from words.txt.--done
+    -Eventually group the words in seperate lists based on length of word for levels. 
+    -User needs to know how many letters the word contains, so split the word up and display an empty "_".\
+    -The "tries" shape everything.
+    -The user needs to input a guess--one guess per round. If they guess more than once, an error message needs to be displayed. 
+        - Need to keep track of guesses. Every time a user guesses, if is correct, append the guess to the new string, but in the correct location.
+        -
+        -
+        - Erase "_" and put letter in the corresponding place.
+    -Display the letters as they are being correctly guessed as well as the remaining letter to be guessed "_".
+    -Display the amount of guesses the user has left
+        -They only lose a guess if they guess incorrectly.
+        -If they guess the same letter twice, don't take away guess, instead print message explaining what happened and to try again. 
+    -The user should select a difficulty level when they first start playing. 
+        - Easy mode only has words of 4-6 characters; normal mode only has words of 6-8 characters; hard mode only has words of 8+ characters.
+    -Game ends when user wins or computer wins (user runs out of guesses). If computer wins, display word to user. 
+        -Ask user if they want to play again. Game will reload if they say respond positively. 
 
 - Import randomize
 - Open the word text file
