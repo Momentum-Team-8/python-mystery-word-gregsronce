@@ -1,52 +1,61 @@
 import random
 
-with open("words.txt") as words_txt:
-    word_options = words_txt.read()
+''' Read and open wordlist, divide words into easy, normal, and hard for player to select.'''
 
-def gamePrompt():
-    # split_words = list(map(str, word_options.split()))
-    # split_letters = list(random_word)
-    # print(split_letters)
-    # tries = 0
-    # while tries > 10:
-    # word_selection = "_" * word_length
-    # split_words = random_words.split(' ')
-    number_of_guesses = 8
-    random_words = ["carrot", "goal"]
-    random_word = random.choice(random_words)
-    word_length = (len(random_word))
+with open("wordlist.txt") as words_txt:
+    word_options = words_txt.read().lower().split()
+    easy_words = []
+    normal_words = []
+    hard_words = []
+    for word in word_options:
+        if 4 <= len(word) <= 6:
+            easy_words.append(word)
+        elif 6 <= len(word) <= 8:
+            normal_words.append(word)
+        elif len(word) > 8:
+            hard_words.append(word)
+
+''' Instructions for user to choose level of difficulty at beginning of the program. 
+Call on word from new lists based on difficulty selection '''
+
+def set_up():
+    print("\nMystery Word Game\n")
+    print("Pick a level to start a new game \nEnter (1) for Easy, (2) for Normal, or (3) for Hard")
+    level = input("Select a level: ")
+    return level
+
+def grab_word(level):
+    if level == "1":
+        word_Choice = random.choice(easy_words)
+    elif level == "2":
+        word_Choice = random.choice(normal_words)
+    elif level == "3":
+        word_Choice = random.choice(hard_words)
+    return word_Choice
+
+def begin_game():
+    level = (set_up())
+    word = (grab_word(level))
+    word_length = (len(word))
     guesses = []
-   
-        for letter in random_word:
+    actual_guesses = []
+    number_of_guesses = 0
+    print("Your word length is ", word_length, " letters long." )
+    print(word)
+    # input_letter = str(input("Make a guess: ").lower())
+    while number_of_guesses != 8:
+        for letter in word:
             guesses.append('_')
+            actual_guesses.append('_')
         input_letter = str(input("Make a guess: "))
-        if input_letter in random_word:
+        if input_letter in word:
             print("Correct")
             for letter in range(word_length):
-                if input_letter == random_word[letter]:
-                    guesses[letter] = random_word[letter]
-                    print(guesses)
-        else: 
-            print("Sorry, guess again")
-            number_of_guesses -= 1 
-        input_letter = input_letter.strip()
-
-
+                if input_letter == word[letter]:
+                    guesses[letter] = word[letter]
+                    actual_guesses[letter] = word[letter]
+                    print(" ".join(guesses))
+                    print(" ".join(actual_guesses))
     
-    # guesses += input_letter 
-    # print(guesses)
-    # print(type(input_letter))
 
-    # if the input letter number corresponds to the space number, then replace space with input letter. 
-        
-    # letter_list[0].replace("_", input_letter)
-    # # word_selection[0] += input_letter
-    # print(letter_list)
-
-
-    # for letter of words:
-        # print(randomword)
-        #input("Your Guess " )
-        # word_selection = "_" * len(words)
-
-gamePrompt()
+begin_game()
